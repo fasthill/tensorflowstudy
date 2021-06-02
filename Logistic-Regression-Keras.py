@@ -29,4 +29,7 @@ model.add(Dense(t_data.shape[1], input_shape=(x_data.shape[1],), activation='sig
 
 model.compile(optimizer=SGD(learning_rate=0.01), loss='binary_crossentropy', metrics=['accuracy'])
 
-model.summary()
+# model.summary()
+
+hist = model.fit(x_data, t_data, epochs=500, validation_split=0.2, verbose=2)
+model.evaluate(x_data, t_data)
