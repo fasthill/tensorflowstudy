@@ -27,11 +27,11 @@ model = Sequential()
 
 model.add(Dense(t_data.shape[1], input_shape=(x_data.shape[1],), activation='sigmoid'))
 
-model.compile(optimizer=SGD(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy'])
+model.compile(optimizer=SGD(learning_rate=0.00005), loss='binary_crossentropy', metrics=['accuracy'])
 
 # model.summary()
 
-hist = model.fit(x_data, t_data, epochs=500, validation_split=0.2, verbose=2)
+hist = model.fit(x_data, t_data, epochs=500, validation_split=0.1, verbose=2)
 model.evaluate(x_data, t_data)
 
 plt.title('Loss')
