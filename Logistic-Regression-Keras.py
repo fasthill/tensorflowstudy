@@ -27,9 +27,31 @@ model = Sequential()
 
 model.add(Dense(t_data.shape[1], input_shape=(x_data.shape[1],), activation='sigmoid'))
 
-model.compile(optimizer=SGD(learning_rate=0.01), loss='binary_crossentropy', metrics=['accuracy'])
+model.compile(optimizer=SGD(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy'])
 
 # model.summary()
 
 hist = model.fit(x_data, t_data, epochs=500, validation_split=0.2, verbose=2)
 model.evaluate(x_data, t_data)
+
+plt.title('Loss')
+plt.xlabel('epochs')
+plt.ylabel('loss')
+plt.grid()
+
+plt.plot(hist.history['loss'], label='train loss')
+plt.plot(hist.history['val_loss'], label='validation loss')
+
+plt.legend(loc='best')
+
+plt.show()
+
+# plt.title('Accuracy')
+# plt.xlabel('epochs')
+# plt.ylabel('accuracy')
+# plt.grid()
+#
+# plt.plot(hist.history['accuracy'], label='train accuracy')
+# plt.plot(hist.history['val_loss'], label='validation accuracy')
+#
+# plt.legend(loc='best')
