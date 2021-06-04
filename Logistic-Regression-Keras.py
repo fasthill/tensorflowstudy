@@ -34,28 +34,29 @@ model.compile(optimizer=SGD(learning_rate=0.00001), loss='binary_crossentropy', 
 hist = model.fit(x_data, t_data, epochs=1000, validation_split=0.1, verbose=2)
 model.evaluate(x_data, t_data)
 
-fig, axes = plt.subplots(1,2, figsize=(20,10))
-plt.title('Loss')
-plt.xlabel('epochs')
-plt.ylabel('loss')
-# plt.ylim([0,20])
-axes[0].grid()
+fig, (ax1, ax2) = plt.subplots(1,2, figsize=(20,10))
+ax1.set_title('Loss')
+ax1.set_xlabel('epochs')
+ax1.set_ylabel('loss')
 
-axes[0].plot(hist.history['loss'], label='train loss')
-axes[0].plot(hist.history['val_loss'], label='validation loss')
+ax1.grid()
 
-axes[0].legend(loc='best')
+ax1.plot(hist.history['loss'], label='train loss')
+ax1.plot(hist.history['val_loss'], label='validation loss')
 
-plt.title('Accuracy')
-plt.xlabel('epochs')
-plt.ylabel('accuracy')
-# plt.ylim([0,20])
+ax1.legend(loc='best')
 
-axes[1].grid()
+ax2.set_title('Accuracy')
+ax2.set_xlabel('epochs')
+ax2.set_ylabel('accuracy')
 
-axes[1].plot(hist.history['accuracy'], label='train accuracy')
-axes[1].plot(hist.history['val_accuracy'], label='validation accuracy')
+ax2.grid()
 
-axes[1].legend(loc='best')
+ax2.plot(hist.history['accuracy'], label='train accuracy')
+ax2.plot(hist.history['val_accuracy'], label='validation accuracy')
+
+ax2.legend(loc='best')
+
+fig.suptitle('Results', fontsize=16)
 
 plt.show()

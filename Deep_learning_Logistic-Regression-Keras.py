@@ -11,8 +11,8 @@ import numpy as np
 
 import os
 
-x_data = np.array([2,4,6,8,10,12,14,16,18,20]).astype('float32')
-t_data = np.array([0,0,0,0,0,0,1,1,1,1]).astype('float32')
+x_data = np.array([2, 4, 6, 8, 10, 12, 14, 16, 18, 20]).astype('float32')
+t_data = np.array([0, 0, 0, 0, 0, 0, 1, 1, 1, 1]).astype('float32')
 
 model = tf.keras.models.Sequential()
 
@@ -33,31 +33,3 @@ for i in range(len(test_data)):
     print(test_data[i],
           sigmoid_value[i],
           logical_value.numpy()[i])
-
-# model.evaluate(x_data, test_data)
-#
-# fig, axes = plt.subplots(1,2, figsize=(20,10))
-# plt.title('Loss')
-# plt.xlabel('epochs')
-# plt.ylabel('loss')
-# # plt.ylim([0,20])
-# axes[0].grid()
-#
-# axes[0].plot(hist.history['loss'], label='train loss')
-# axes[0].plot(hist.history['val_loss'], label='validation loss')
-#
-# axes[0].legend(loc='best')
-#
-# plt.title('Accuracy')
-# plt.xlabel('epochs')
-# plt.ylabel('accuracy')
-# # plt.ylim([0,20])
-#
-# axes[1].grid()
-#
-# axes[1].plot(hist.history['accuracy'], label='train accuracy')
-# axes[1].plot(hist.history['val_accuracy'], label='validation accuracy')
-#
-# axes[1].legend(loc='best')
-#
-# plt.show()

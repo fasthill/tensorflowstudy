@@ -19,10 +19,10 @@ print('\n test shape = ', x_test.shape,
 print('\n train label = ', t_train)
 print(' test label = ', t_test)
 
-plt.figure(figsize=(6,6))
+plt.figure(figsize=(6, 6))
 
 for index in range(25):
-    plt.subplot(5,5, index + 1)
+    plt.subplot(5, 5, index + 1)
     plt.imshow(x_train[index], cmap='gray')
     plt.axis('off')
 
@@ -39,7 +39,7 @@ t_test = tf.keras.utils.to_categorical(t_test, num_classes=10)
 
 model = tf.keras.Sequential()
 
-model.add(tf.keras.layers.Flatten(input_shape=(28,28)))
+model.add(tf.keras.layers.Flatten(input_shape=(28, 28)))
 model.add(tf.keras.layers.Dense(100, activation='relu'))
 model.add(tf.keras.layers.Dense(10, activation='softmax'))
 
@@ -53,27 +53,28 @@ hist = model.fit(x_train, t_train, epochs=30, validation_split=0.3)
 
 model.evaluate(x_test, t_test)
 
-fig, axes = plt.subplots(1,2, figsize=(20,10))
-plt.title('Loss')
-plt.xlabel('epochs')
-plt.ylabel('loss')
-# plt.ylim([0,20])
-axes[0].grid()
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
+ax1.set_title('Loss')
+ax1.set_xlabel('epochs')
+ax1.set_ylabel('loss')
+ax1.grid()
 
-axes[0].plot(hist.history['loss'], label='train loss')
-axes[0].plot(hist.history['val_loss'], label='validation loss')
+ax1.plot(hist.history['loss'], label='train loss')
+ax1.plot(hist.history['val_loss'], label='validation loss')
 
-axes[0].legend(loc='best')
+ax1.legend(loc='best')
 
-plt.title('Accuracy')
-plt.xlabel('epochs')
-plt.ylabel('accuracy')
+ax2.set_title('Accuracy')
+ax2.set_xlabel('epochs')
+ax2.set_ylabel('accuracy')
 
-axes[1].grid()
+ax2.grid()
 
-axes[1].plot(hist.history['accuracy'], label='train accuracy')
-axes[1].plot(hist.history['val_accuracy'], label='validation accuracy')
+ax2.plot(hist.history['accuracy'], label='train accuracy')
+ax2.plot(hist.history['val_accuracy'], label='validation accuracy')
 
-axes[1].legend(loc='best')
+ax2.legend(loc='best')
+
+fig.suptitle('Results', fontsize=16)
 
 plt.show()
