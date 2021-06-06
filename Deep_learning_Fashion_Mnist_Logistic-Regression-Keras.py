@@ -80,14 +80,18 @@ fig.suptitle('Results', fontsize=16)
 
 plt.show()
 
-from sklearn.metrics import confusion_matrix
-import seaborn as sns
-
-plt.figure(figsize=(6,6))
-predicted_value = model.predict(x_test)
-
-cm = confusion_matrix(t_test,
-                      np.argmax(predicted_value, axis=-1))
-
-sns.heatmap(cm, annot=True, fmt='d')
-plt.show()
+"""
+아래 수행시 error이 발생함. unix시스템에서는 발생하지 않는 error임.
+window 수행시 방법은 아직 모르겠음(stackoveflow 등에도 나오지 않음)
+"""
+# from sklearn.metrics import confusion_matrix
+# import seaborn as sns
+#
+# plt.figure(figsize=(6,6))
+# predicted_value = model.predict(x_test)
+#
+# cm = confusion_matrix(t_test,
+#                       np.argmax(predicted_value, axis=-1))
+#
+# sns.heatmap(cm, annot=True, fmt='d')
+# plt.show()
